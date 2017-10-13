@@ -39,6 +39,9 @@
     <ClInclude Include="PointBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Point2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SymmetryExplorer.cpp">
@@ -53,7 +56,10 @@
     <ClCompile Include="ChildView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CPointBase.cpp">
+    <ClCompile Include="Point2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PointBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

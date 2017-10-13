@@ -24,20 +24,40 @@ public:
 
 	/**
 	 * Move the point forward/backward by its speed
-	 * \param sign direction (forward or backward) of motion
+	 * \param sign direction of motion (+1 for forward, -1 for backward)
 	 */
-	virtual void Forward(int sign) { Forward(sign, mSpeed); }
+	void Forward(int sign) { Forward(sign, mSpeed); }
 
 	/**
 	 * Move the point forward/backward by a given distance
-	 * \param sign direction (forward or backward) of motion
-	 * \param distance how far to move
+	 * \param sign direction of motion (+1 for forward, -1 for backward)
+	 * \param distance how far to move (virtual pixels)
 	 */
 	virtual void Forward(int sign, double distance) {}
 
+	/**
+	 * Rotate the point right/left by its rotational speed
+	 * \param sign direction of rotation (+1 for right, -1 for left)
+	 */
+	void Right(int sign) { Right(sign, mSpeed); }
+
+	/**
+	 * Rotate the point right/left by a given amount
+	 * \param sign direction of rotation (+1 for right, -1 for left)
+	 * \param distance how far to move (radians)
+	 */
+	virtual void Right(int sign, double distance) {}
+
+protected:
+	/**
+	 * Rotation sign
+	 * \returns 1 for normal, -1 to make all turns in opposite direction
+	 */
+	double GetRotationSign() { return mRotationSign; }
+
 private:
-	int mRotationSign; ///< 1 for forward, -1 for backward rotation
-	double mSpeed; ///< scale factor for forward/backward motion
-	double mRotationSpeed; ///< scale factor for rotation
+	int mRotationSign; ///< 1 for normal, -1 to make all turns in opposite direction
+	double mSpeed; ///< default movement distance (virtual pixels)
+	double mRotationSpeed; ///< default rotation angle (radians)
 };
 
