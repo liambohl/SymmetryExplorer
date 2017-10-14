@@ -23,6 +23,13 @@ public:
 
 	void Right(int sign);
 
+protected:
+	/**
+	 * Add a point to the cloud
+	 * \param point the point to add
+	 */
+	void Add(std::shared_ptr<CPointBase> point) { mPoints.push_back(point); }
+
 private:
 	std::vector<std::shared_ptr<CPointBase>> mPoints; ///< Constituent points
 	Gdiplus::Pen mPen; ///< Pen used to draw points

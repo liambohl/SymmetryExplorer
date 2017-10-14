@@ -6,14 +6,16 @@
 
 #include "stdafx.h"
 #include "PlayArea.h"
+#include "PointCloud2D.h"
 
+using namespace std;
 using namespace Gdiplus;
 
 const int Width = 1000; ///< Width of this area (virtual pixels)
 const int Height = 1000; ///< Height of this area (virtual pixels)
 
 
-CPlayArea::CPlayArea()
+CPlayArea::CPlayArea() : mPointCloud(5)
 {
 }
 
@@ -33,5 +35,5 @@ void CPlayArea::OnDraw(Graphics *graphics)
 	graphics->FillRectangle(&areaBrush, -Width / 2, -Height / 2, Width, Height);
 
 	// Draw point cloud
-	mPointCloud->OnDraw(graphics);
+	mPointCloud.OnDraw(graphics);
 }

@@ -33,7 +33,7 @@ public:
 	 * \param sign direction of motion (+1 for forward, -1 for backward)
 	 * \param distance how far to move (virtual pixels)
 	 */
-	virtual void Forward(int sign, double distance) {}
+	virtual void Forward(int sign, double distance) = 0;
 
 	/**
 	 * Rotate the point right/left by its rotational speed
@@ -46,24 +46,24 @@ public:
 	 * \param sign direction of rotation (+1 for right, -1 for left)
 	 * \param distance how far to move (radians)
 	 */
-	virtual void Right(int sign, double distance) {}
+	virtual void Right(int sign, double distance) = 0;
 
 	/**
 	 * Draw this point onto the play area
 	 * \param graphics the graphics object to draw on
 	 * \param pen the pen to draw with
 	 */
-	virtual void OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen) {}
+	virtual void OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen) = 0;
 
 protected:
 	/**
 	 * Rotation sign
 	 * \returns 1 for normal, -1 to make all turns in opposite direction
 	 */
-	double GetRotationSign() { return mRotationSign; }
+	//double GetRotationSign() { return mRotationSign; }
+	int mRotationSign; ///< 1 for normal, -1 to make all turns in opposite direction
 
 private:
-	int mRotationSign; ///< 1 for normal, -1 to make all turns in opposite direction
 	double mSpeed; ///< default movement distance (virtual pixels)
 	double mRotationSpeed; ///< default rotation angle (radians)
 };

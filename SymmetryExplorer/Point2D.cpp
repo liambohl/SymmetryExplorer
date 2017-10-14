@@ -27,7 +27,8 @@ void CPoint2D::Forward(int sign, double distance)
  */
 void CPoint2D::Right(int sign, double distance)
 {
-	mDirection += sign * GetRotationSign() * distance;
+	//mDirection += sign * GetRotationSign() * distance;
+	mDirection += sign * mRotationSign * distance;
 }
 
 

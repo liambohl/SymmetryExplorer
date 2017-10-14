@@ -8,8 +8,7 @@
 
 #pragma once
 
-#include <memory>
-#include "PointCloud.h"
+#include "PointCloud2D.h"
 
 class CPlayArea
 {
@@ -23,6 +22,6 @@ public:
 	void OnDraw(Gdiplus::Graphics *graphics);
 
 private:
-	std::shared_ptr<CPointCloud> mPointCloud; ///< Cloud of points used to demonstrate symmetry
+	CPointCloud2D mPointCloud; ///< Cloud of points used to demonstrate symmetry
 };
 

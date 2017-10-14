@@ -4,7 +4,6 @@
 
 
 #pragma once
-#include <memory>
 #include "PlayArea.h"
 
 // CChildView window
@@ -35,6 +34,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
-	std::shared_ptr<CPlayArea> mPlayArea; ///< The play area containing the symmetry demonstration
+	CPlayArea mPlayArea; ///< The play area containing the symmetry demonstration
 };
 

@@ -78,5 +78,6 @@ void CChildView::OnPaint()
 	graphics.Clear(Color(63, 63, 63));
 
 	// Draw play area
+	mPlayArea.OnDraw(&graphics);
 }
 
