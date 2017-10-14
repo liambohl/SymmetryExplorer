@@ -39,5 +39,5 @@ void CPoint2D::Right(int sign, double distance)
  */
 void CPoint2D::OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen)
 {
-	graphics->DrawEllipse(pen, mXPos - 1, mYPos - 1, 2, 2);
+	graphics->DrawEllipse(pen, int(mXPos - 1), int(mYPos - 1), 2, 2);
 }

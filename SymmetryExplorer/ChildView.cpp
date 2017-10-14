@@ -60,15 +60,15 @@ void CChildView::OnPaint()
 	GetClientRect(&rect);
 
 	// Calculate transform
-	double windowWidth = double(rect.Width());
-	double windowHeight = double(rect.Height());
+	REAL windowWidth = (REAL)rect.Width();
+	REAL windowHeight = (REAL)rect.Height();
 
-	double scaleX = windowWidth / VirtualWidth;
-	double scaleY = windowHeight / VirtualHeight;
-	double minScale = min(scaleX, scaleY);
+	REAL scaleX = windowWidth / VirtualWidth;
+	REAL scaleY = windowHeight / VirtualHeight;
+	REAL minScale = min(scaleX, scaleY);
 
-	double offsetX = windowWidth / 2.0;
-	double offsetY = windowHeight / 2.0;
+	REAL offsetX = windowWidth / 2;
+	REAL offsetY = windowHeight / 2;
 
 	// Apply transform
 	graphics.TranslateTransform(offsetX, offsetY);
