@@ -28,6 +28,8 @@ public:
 
 	virtual void Right(int sign, double distance) override;
 
+	virtual void OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen) override;
+
 private:
 	double mXPos; ///< x value of point position
 	double mYPos; ///< y value of point position

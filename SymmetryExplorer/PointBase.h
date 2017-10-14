@@ -48,6 +48,13 @@ public:
 	 */
 	virtual void Right(int sign, double distance) {}
 
+	/**
+	 * Draw this point onto the play area
+	 * \param graphics the graphics object to draw on
+	 * \param pen the pen to draw with
+	 */
+	virtual void OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen) {}
+
 protected:
 	/**
 	 * Rotation sign

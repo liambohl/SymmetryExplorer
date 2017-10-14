@@ -4,7 +4,8 @@
 
 
 #pragma once
-
+#include <memory>
+#include "PlayArea.h"
 
 // CChildView window
 
@@ -32,5 +33,8 @@ public:
 protected:
 	afx_msg void OnPaint();
 	DECLARE_MESSAGE_MAP()
+
+private:
+	std::shared_ptr<CPlayArea> mPlayArea; ///< The play area containing the symmetry demonstration
 };
 

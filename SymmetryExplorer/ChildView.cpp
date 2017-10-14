@@ -9,7 +9,7 @@
 
 using namespace Gdiplus;
 
-const int VirtualWidth = 1100; ///< Minimum width of window (virtual pixels)
+const int VirtualWidth = 1500; ///< Minimum width of window (virtual pixels)
 const int VirtualHeight = 1100; ///< Minimum height of window (virtual pixels)
 
 #ifdef _DEBUG
@@ -74,11 +74,9 @@ void CChildView::OnPaint()
 	graphics.TranslateTransform(offsetX, offsetY);
 	graphics.ScaleTransform(minScale, minScale);
 
-	// Fill the play area with gray
+	// Fill the window with gray
 	graphics.Clear(Color(63, 63, 63));
 
 	// Draw play area
-	SolidBrush areaBrush(Color::Black);
-	graphics.FillRectangle(&areaBrush, -500, -500, 1000, 1000);
 }
 

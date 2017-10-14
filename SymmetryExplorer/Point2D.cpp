@@ -29,3 +29,14 @@ void CPoint2D::Right(int sign, double distance)
 {
 	mDirection += sign * GetRotationSign() * distance;
 }
+
+
+/**
+ * Draw this point onto the play area
+ * \param graphics the graphics object to draw on
+ * \param pen the pen to draw with
+ */
+void CPoint2D::OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen)
+{
+	graphics->DrawEllipse(pen, mXPos - 1, mYPos - 1, 2, 2);
+}

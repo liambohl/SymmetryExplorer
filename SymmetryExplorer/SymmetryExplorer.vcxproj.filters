@@ -45,6 +45,12 @@
     <ClInclude Include="DoubleBufferDC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayArea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointCloud.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SymmetryExplorer.cpp">
@@ -63,6 +69,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PointBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PointCloud.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

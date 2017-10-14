@@ -186,8 +186,10 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="PlayArea.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="PointBase.h" />
+    <ClInclude Include="PointCloud.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SymmetryExplorer.h" />
@@ -195,9 +197,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="PlayArea.cpp" />
     <ClCompile Include="PointBase.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="PointCloud.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
