@@ -4,7 +4,13 @@
 
 #include "stdafx.h"
 #include "SymmetryExplorer.h"
+#include "DoubleBufferDC.h"
 #include "ChildView.h"
+
+using namespace Gdiplus;
+
+const int VirtualWidth = 1100; ///< Minimum width of window (virtual pixels)
+const int VirtualHeight = 1100; ///< Minimum height of window (virtual pixels)
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -45,10 +51,34 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 
 void CChildView::OnPaint() 
 {
-	CPaintDC dc(this); // device context for painting
-	
-	// TODO: Add your message handler code here
-	
-	// Do not call CWnd::OnPaint() for painting messages
+	CPaintDC paintDC(this); // device context for painting
+	CDoubleBufferDC dc(&paintDC); // device context for painting
+	Graphics graphics(dc.m_hDC);
+
+	// Get window size
+	CRect rect;
+	GetClientRect(&rect);
+
+	// Calculate transform
+	double windowWidth = double(rect.Width());
+	double windowHeight = double(rect.Height());
+
+	double scaleX = windowWidth / VirtualWidth;
+	double scaleY = windowHeight / VirtualHeight;
+	double minScale = min(scaleX, scaleY);
+
+	double offsetX = windowWidth / 2.0;
+	double offsetY = windowHeight / 2.0;
+
+	// Apply transform
+	graphics.TranslateTransform(offsetX, offsetY);
+	graphics.ScaleTransform(minScale, minScale);
+
+	// Fill the play area with gray
+	graphics.Clear(Color(63, 63, 63));
+
+	// Draw play area
+	SolidBrush areaBrush(Color::Black);
+	graphics.FillRectangle(&areaBrush, -500, -500, 1000, 1000);
 }
 

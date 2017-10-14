@@ -62,7 +62,8 @@ BOOL CSymmetryExplorerApp::InitInstance()
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
-
+	// Startup for Gdiplus graphics
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
 	// Initialize OLE libraries
 	if (!AfxOleInit())
@@ -111,7 +112,8 @@ BOOL CSymmetryExplorerApp::InitInstance()
 
 int CSymmetryExplorerApp::ExitInstance()
 {
-	//TODO: handle additional resources you may have added
+	Gdiplus::GdiplusShutdown(gdiplusToken);
+
 	AfxOleTerm(FALSE);
 
 	return CWinApp::ExitInstance();
