@@ -15,12 +15,12 @@
  */
 CPointCloud2D::CPointCloud2D(int symmetry)
 {
-	auto point = std::make_shared<CPoint2D>();
+	CPoint2D point;
 	for (int i = 0; i < symmetry; ++i)
 	{
-		Add(point);
-		Add(point->Reverse());
-		point->Right(1, 2 * Pi / symmetry);
+		Add(std::make_shared<CPoint2D>(point));
+		Add(point.Reverse());
+		point.Right(1, 2 * Pi / symmetry);
 	}
 }
 
