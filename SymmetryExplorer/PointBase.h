@@ -12,12 +12,11 @@ class CPointBase
 public:
 	/**
 	 * Constructor
-	 * \param rotationSign direction (forward or backward) for rotation
 	 * \param speed scale factor for forward/backward motion
 	 * \param rotationSpeed scale factor for rotation
 	 */
-	CPointBase(int rotationSign, double speed, double rotationSpeed) :
-		mRotationSign(rotationSign), mSpeed(speed), mRotationSpeed(rotationSpeed) {}
+	CPointBase(double speed, double rotationSpeed) :
+		mSpeed(speed), mRotationSpeed(rotationSpeed) {}
 
 	/** Destructor */
 	~CPointBase() {}
@@ -55,13 +54,18 @@ public:
 	 */
 	virtual void OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen) = 0;
 
+	/**
+	 * Reverse rotation direction
+	 */
+	void SwitchRotationSign() { mRotationSign = -mRotationSign; }
+
 protected:
 	/**
 	 * Rotation sign
 	 * \returns 1 for normal, -1 to make all turns in opposite direction
 	 */
 	//double GetRotationSign() { return mRotationSign; }
-	int mRotationSign; ///< 1 for normal, -1 to make all turns in opposite direction
+	int mRotationSign = 1; ///< 1 for normal, -1 to make all turns in opposite direction
 
 private:
 	double mSpeed; ///< default movement distance (virtual pixels)
