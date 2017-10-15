@@ -8,9 +8,9 @@
 
 #pragma once
 
-#define Pi 3.14159265358979323846 ///< Mathematical pi
-
 #include "PointCloud.h"
+
+#define Pi 3.14159265358979323846 ///< Mathematical pi
 
 class CPointCloud2D : public CPointCloud
 {

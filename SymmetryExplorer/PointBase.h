@@ -39,7 +39,7 @@ public:
 	 * Rotate the point right/left by its rotational speed
 	 * \param sign direction of rotation (+1 for right, -1 for left)
 	 */
-	void Right(int sign) { Right(sign, mSpeed); }
+	void Right(int sign) { Right(sign, mRotationSpeed); }
 
 	/**
 	 * Rotate the point right/left by a given amount

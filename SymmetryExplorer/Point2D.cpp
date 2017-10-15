@@ -8,6 +8,8 @@
 #include <cmath>
 #include "Point2D.h"
 
+const int ArrowLength = 20;
+
 
 /**
  * Move the point forward/backward by a given distance
@@ -16,8 +18,12 @@
  */
 void CPoint2D::Forward(int sign, double distance)
 {
-	mXPos += sign * distance * cos(mDirection);
-	mYPos += sign * distance * sin(mDirection);
+	double xPos = mXHistory.back;
+	double yPos = mYHistory.back;
+	xPos += sign * distance * cos(mDirection);
+	yPos += sign * distance * sin(mDirection);
+	mXHistory.push_back(xPos);
+	mYHistory.push_back(yPos);
 }
 
 /**
@@ -39,5 +45,12 @@ void CPoint2D::Right(int sign, double distance)
  */
 void CPoint2D::OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen)
 {
-	graphics->DrawEllipse(pen, int(mXPos - 1), int(mYPos - 1), 2, 2);
+	// Draw path
+
+	// Draw arrow at end of path
+	double xPos = mXHistory.back;
+	double yPos = mYHistory.back;
+	int arrowheadX = xPos + ArrowLength * cos(mDirection);
+	int arrowheadY = yPos + ArrowLength * sin(mDirection);
+	graphics->DrawLine(pen, xPos, yPos, arrowheadX, arrowheadY);
 }

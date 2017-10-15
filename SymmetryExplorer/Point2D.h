@@ -8,10 +8,13 @@
 
 #pragma once
 #include <memory>
+#include <vector>
 #include "PointBase.h"
 
-const double Speed = 1.0;
-const double RotationSpeed = 0.1;
+#define Pi 3.14159265358979323846 ///< Mathematical pi
+
+const double Speed = 3.0;
+const double RotationSpeed = Pi / 12;
 
 class CPoint2D : public CPointBase
 {
@@ -25,23 +28,13 @@ public:
 	/**
 	 * Constructor
 	 * \param rotationSign direction (forward or backward) for rotation
-	 * \param xPos x position
-	 * \param yPos y position
+	 * \param xHistory x position history
+	 * \param yHistory y position history
 	 * \param direction direction as angle CCW from positive x-axis (radians)
 	 */
-	CPoint2D(int rotationSign, double xPos, double yPos, double direction) :
+	CPoint2D(int rotationSign, std::vector<double> xHistory, std::vector<double> yHistory, double direction) :
 		CPointBase(rotationSign, Speed, RotationSpeed),
-		mXPos(xPos), mYPos(yPos), mDirection(direction) {}
-
-	// TODO: remove this constructor
-	/**
-	 * Constructor
-	 * \param rotationSign direction (forward or backward) for rotation
-	 * \param speed scale factor for forward/backward motion
-	 * \param rotationSpeed scale factor for rotation
-	 */
-	CPoint2D(int rotationSign, double speed, double rotationSpeed) :
-		CPointBase(rotationSign, speed, rotationSpeed) {}
+		mXHistory(xHistory), mYHistory(yHistory), mDirection(direction) {}
 
 	/// Destructor
 	~CPoint2D() {}
@@ -52,8 +45,7 @@ public:
 	 */
 	std::shared_ptr<CPoint2D> Reverse()
 	{
-		//return std::make_shared<CPoint2D>(-GetRotationSign(), mXPos, mYPos, mDirection);
-		return std::make_shared<CPoint2D>(-mRotationSign, mXPos, mYPos, mDirection);
+		return std::make_shared<CPoint2D>(-mRotationSign, mXHistory, mYHistory, mDirection);
 	}
 
 	virtual void Forward(int sign, double distance) override;
@@ -63,8 +55,17 @@ public:
 	virtual void OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen) override;
 
 private:
-	double mXPos = 0; ///< x value of point position
-	double mYPos = 0; ///< y value of point position
-	double mDirection = 0; ///< direction as angle CCW from positive x-axis (radians)
+	struct Position
+	{
+		Position(double newX, double newY) : x(newX), y(newY) {}
+		double x;
+		double y;
+	};
+
+	/// History of this point's position
+	//std::vector<Position> mPositionHistory = { Position(0, 0) };
+	std::vector<double> mXHistory = {0}; ///< history of x positions
+	std::vector<double> mYHistory = { 0 }; ///< history of y positions
+	double mDirection = 0; ///< current direction as angle CCW from positive x-axis (radians)
 };
 
