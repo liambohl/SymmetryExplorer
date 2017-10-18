@@ -37,9 +37,9 @@ void CPoint2D::Right(int sign, double distance)
 
 
 /**
-* Copy this point and reverse rotation direction
-* \returns pointer to new point identical to this one but with opposite rotation sign
-*/
+ * Copy this point and reverse rotation direction
+ * \returns pointer to new point identical to this one but with opposite rotation sign
+ */
 std::shared_ptr<CPoint2D> CPoint2D::Reverse()
 {
 	auto reversePoint = std::make_shared<CPoint2D>(*this);

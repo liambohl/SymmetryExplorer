@@ -113,9 +113,9 @@ void CChildView::OnPaint()
 
 
 /**
-* Handle timer events
-* \param nIDEvent The timer event ID
-*/
+ * Handle timer events
+ * \param nIDEvent The timer event ID
+ */
 void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
 	Invalidate();

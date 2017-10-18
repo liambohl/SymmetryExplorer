@@ -32,9 +32,9 @@ void CPointCloud::OnDraw(Graphics *graphics)
 
 
 /**
-* Move each point forward/backward by its speed
-* \param sign direction of motion (+1 for forward, -1 for backward)
-*/
+ * Move each point forward/backward by its speed
+ * \param sign direction of motion (+1 for forward, -1 for backward)
+ */
 void CPointCloud::Forward(int sign)
 {
 	for (auto point : mPoints)
@@ -43,9 +43,9 @@ void CPointCloud::Forward(int sign)
 
 
 /**
-* Rotate each point right/left by its rotational speed
-* \param sign direction of rotation (+1 for right, -1 for left)
-*/
+ * Rotate each point right/left by its rotational speed
+ * \param sign direction of rotation (+1 for right, -1 for left)
+ */
 void CPointCloud::Right(int sign)
 {
 	for (auto point : mPoints)
