@@ -92,6 +92,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\liamb\Documents\code\C++\toolbox\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -188,6 +189,7 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="PlayArea.h" />
     <ClInclude Include="Point2D.h" />
+    <ClInclude Include="Point3D.h" />
     <ClInclude Include="PointBase.h" />
     <ClInclude Include="PointCloud.h" />
     <ClInclude Include="PointCloud2D.h" />
@@ -199,6 +201,7 @@
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="PlayArea.cpp" />
+    <ClCompile Include="Point3D.cpp" />
     <ClCompile Include="PointBase.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Point2D.cpp" />

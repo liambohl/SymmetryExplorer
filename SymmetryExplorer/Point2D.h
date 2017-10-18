@@ -13,11 +13,14 @@
 
 #define Pi 3.14159265358979323846 ///< Mathematical pi
 
-const double Speed = 5.0;
-const double RotationSpeed = Pi / 12;
-
 class CPoint2D : public CPointBase
 {
+	/// Movement speed (virtual pixels / key press)
+	const double Speed = 5.0;
+
+	/// Rotational speed (rad / key press)
+	const double RotationSpeed = Pi / 12;
+
 public:
 	/// Constructor
 	CPoint2D() : CPointBase(Speed, RotationSpeed) {}
@@ -44,6 +47,7 @@ private:
 
 	/// History of this point's position
 	std::vector<Position> mPositionHistory = { Position(0, 0) };
-	double mDirection = 0; ///< current direction as angle CCW from positive x-axis (radians)
+	/// current direction as angle CCW from positive x-axis (radians)
+	double mDirection = 0;
 };
 
