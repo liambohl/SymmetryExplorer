@@ -8,8 +8,6 @@
 #include <cmath>
 #include "Point2D.h"
 
-const int ArrowLength = 20;
-
 
 /**
  * Move the point forward/backward by a given distance

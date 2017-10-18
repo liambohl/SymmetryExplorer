@@ -5,7 +5,10 @@
  */
 
 #include "stdafx.h"
+#include <cmath>
 #include "Point3D.h"
+
+using namespace Eigen;
 
 
 /**
@@ -15,8 +18,8 @@
  */
 void CPoint3D::Forward(int sign, double distance)
 {
-	Transform<double, 3, Affine> rotation(AngleAxis<double>(distance * Pi / 180, direction));
-	position = rotation * position;
+	Transform<double, 3, Affine> rotation(AngleAxis<double>(distance * Pi / 180, mDirection));
+	mPositionHistory.push_back(rotation * mPositionHistory.back());
 }
 
 
@@ -27,8 +30,8 @@ void CPoint3D::Forward(int sign, double distance)
  */
 void CPoint3D::Right(int sign, double distance)
 {
-	Transform<double, 3, Affine> rotation(AngleAxis<double>(-distance * Pi / 180, position));
-	direction = rotation * direction;
+	Transform<double, 3, Affine> rotation(AngleAxis<double>(-distance * Pi / 180, mPositionHistory.back()));
+	mDirection = rotation * mDirection;
 }
 
 
@@ -51,5 +54,25 @@ std::shared_ptr<CPoint3D> CPoint3D::Reverse()
 */
 void CPoint3D::OnDraw(Gdiplus::Graphics *graphics, const Gdiplus::Pen *pen)
 {
+	// Draw path
+	Vector3d pos1;
+	bool first = true;
+	for (Vector3d pos2 : mPositionHistory)
+	{
+		if (first)
+		{
+			first = false;
+		}
+		else
+		{
+			graphics->DrawLine(pen, (int)pos1.x(), (int)pos1.y(), (int)pos2.x(), (int)pos2.y());
+			pos1 = pos2;
+		}
+	}
 
+	// Draw arrow at end of path
+	//Vector3d currentPos = mPositionHistory.back();
+	//int arrowheadX = currentPos.x + ArrowLength * cos(mDirection);
+	//int arrowheadY = currentPos.y + ArrowLength * sin(mDirection);
+	//graphics->DrawLine(pen, currentPos.x, currentPos.y, arrowheadX, arrowheadY);
 }

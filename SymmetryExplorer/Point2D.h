@@ -21,6 +21,9 @@ class CPoint2D : public CPointBase
 	/// Rotational speed (rad / key press)
 	const double RotationSpeed = Pi / 12;
 
+	/// Length to draw arrowhead (virtual pixels)
+	const int ArrowLength = 20;
+
 public:
 	/// Constructor
 	CPoint2D() : CPointBase(Speed, RotationSpeed) {}
@@ -47,6 +50,7 @@ private:
 
 	/// History of this point's position
 	std::vector<Position> mPositionHistory = { Position(0, 0) };
+
 	/// current direction as angle CCW from positive x-axis (radians)
 	double mDirection = 0;
 };

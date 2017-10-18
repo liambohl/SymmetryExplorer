@@ -13,8 +13,6 @@
 #include <Eigen\Dense>
 #include "PointBase.h"
 
-using namespace Eigen;
-
 #define Pi 3.14159265358979323846 ///< Mathematical pi
 
 class CPoint3D : public CPointBase
@@ -24,6 +22,9 @@ class CPoint3D : public CPointBase
 
 	/// Rotational speed (rad / key press)
 	const double RotationSpeed = Pi / 12;
+
+	/// Length to draw arrowhead (virtual pixels)
+	const int ArrowLength = 20;
 
 public:
 	/// Constructor
@@ -42,8 +43,9 @@ public:
 
 private:
 	/// History of this point's position
-	std::vector<Vector3d> position = { Vector3d(1.0, 0.0, 0.0) };
+	std::vector<Eigen::Vector3d> mPositionHistory = { Eigen::Vector3d(1.0, 0.0, 0.0) };
+
 	/// current direction as angle CCW from positive x-axis (radians)
-	std::vector<Vector3d> direction = { Vector3d(0.0, 1.0, 0.0) };
+	Eigen::Vector3d mDirection = Eigen::Vector3d(0.0, 1.0, 0.0);
 };
 
