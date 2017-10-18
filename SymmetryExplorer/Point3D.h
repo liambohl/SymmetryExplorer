@@ -15,17 +15,18 @@
 
 #define Pi 3.14159265358979323846 ///< Mathematical pi
 
+ /// Movement speed (rad / key press)
+const double Speed = Pi / 24;
+
+/// Rotational speed (rad / key press)
+const double RotationSpeed = Pi / 12;
+
+/// Length to draw arrowhead (virtual pixels)
+const int ArrowLength = 20;
+
+
 class CPoint3D : public CPointBase
 {
-	/// Movement speed (rad / key press)
-	const double Speed = Pi / 24;
-
-	/// Rotational speed (rad / key press)
-	const double RotationSpeed = Pi / 12;
-
-	/// Length to draw arrowhead (virtual pixels)
-	const int ArrowLength = 20;
-
 public:
 	/// Constructor
 	CPoint3D() : CPointBase(Speed, RotationSpeed) {};

@@ -119,10 +119,6 @@ BEGIN
         MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
         MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
     END
-    POPUP "&Help"
-    BEGIN
-        MENUITEM "&About SymmetryExplorer...",  ID_APP_ABOUT
-    END
 END
 
 
